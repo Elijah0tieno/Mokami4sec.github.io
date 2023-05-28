@@ -1,0 +1,51 @@
+
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h1>Hello,welcome to our Website</h1>
+    
+    </form>
+    <br />
+    <img src="static/image/Abbie.png" width="400" height="400">
+    
+    <title>Symptoms UI</title>
+  </head>
+  <body>
+    <h1>Enter Your Symptoms</h1>
+    <form method="POST">
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" required><br>
+  
+      <label for="cholesterol">High Cholesterol:</label>
+      <select name="cholesterol" id="cholesterol" required>
+        <option value="1">1</option>
+        <option value="0">0</option>
+      </select><br>
+  
+      <label for="bmi">BMI:</label>
+      <input type="number" name="bmi" id="bmi" required><br>
+  
+      <label for="activity">Physical Activity Level:</label>
+      <select name="activity" id="activity" required>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select><br>
+  
+      <label for="health">Physical Health:</label>
+      <select name="health" id="health" required>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select><br>
+  
+      <label for="blood_pressure">High Blood Pressure:</label>
+      <select name="blood_pressure" id="blood_pressure" required>
+        <option value="1">1</option>
+        <option value="0">0</option>
+      </select><br>
+
+    <div align="center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+    {% endblock %}
+    
