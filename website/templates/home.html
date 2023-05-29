@@ -1,51 +1,94 @@
 
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-    %}
-    <h1>Hello,welcome to our Website</h1>
-    
-    </form>
-    <br />
-    <img src="static/image/Abbie.png" width="400" height="400">
-    
-    <title>Symptoms UI</title>
-  </head>
-  <body>
-    <h1>Enter Your Symptoms</h1>
+  %}
+
+  <div class="mainContent">
+
+
     <form method="POST">
+
+      <h1>Hello,welcome to our Website</h1>
+      <br />
+      <img src="static/image/Abbie.png" width="400" height="200">
+
+      <title>Symptoms UI</title>
+
+      <!-- if there is prediction value -->
+      {% if results %}
+      <h2 style="color:red; font-size:35px; font-weight:bold;">Results: {{results}}</h2>
+      {%  endif %}
+      <h1>Enter Your Symptoms</h1>
+
+
       <label for="age">Age:</label>
       <input type="number" name="age" id="age" required><br>
-  
+
       <label for="cholesterol">High Cholesterol:</label>
       <select name="cholesterol" id="cholesterol" required>
         <option value="1">1</option>
         <option value="0">0</option>
       </select><br>
-  
+
       <label for="bmi">BMI:</label>
       <input type="number" name="bmi" id="bmi" required><br>
-  
+
       <label for="activity">Physical Activity Level:</label>
       <select name="activity" id="activity" required>
         <option value="0">0</option>
         <option value="1">1</option>
       </select><br>
-  
+
       <label for="health">Physical Health:</label>
       <select name="health" id="health" required>
         <option value="0">0</option>
         <option value="1">1</option>
       </select><br>
-  
+
       <label for="blood_pressure">High Blood Pressure:</label>
+
+
       <select name="blood_pressure" id="blood_pressure" required>
         <option value="1">1</option>
         <option value="0">0</option>
       </select><br>
 
-    <div align="center">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </form>
 
-    {% endblock %}
-    
+      <!-- add this items -->
+      <label for="heart_disease_or_attack">Enter 1 if you've had heart disease or attack, 0 otherwise:</label>
+      <select name="heart_disease_or_attack" id="heart_disease_or_attack" required>
+        <option value="1">1</option>
+        <option value="0">0</option>
+      </select><br>
+
+      <label for="gen_hlth">On a scale of 1-5 rate your general health, 1 being excellent:</label>
+      <select name="gen_hlth" id="gen_hlth" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
+
+      <label for="diff_walk">Enter 1 if you have difficulty in walking, 0 otherwise: </label>
+      <select name="diff_walk" id="diff_walk" required>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select><br>
+
+      <label for="chol_check">Enter 0 for no cholestrol check in five years, 1 otherwise: </label>
+      <select name="chol_check" id="chol_check" required>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select><br>
+
+      <label for="men_hlth">Enter days of poor mental health you've had, 1-30: </label>
+      <input type="number" name="men_hlth" id="men_hlth" max="30" min="1" required><br>
+      <br>
+      <div align="center">
+        <button type="submit" class="btn btn-lg-primary">Submit</button>
+      </div>
+    </form>
+
+
+  </div>
+  {% endblock %}
