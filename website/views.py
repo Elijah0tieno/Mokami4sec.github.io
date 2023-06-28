@@ -28,7 +28,7 @@ def make_prediction(inputs_ll):
     #print(data)
 
     # do prediction using the pre-trained model
-    preds = model.predict_proba(data)
+    preds = model.predict_proba(data[model.best_estimator_.feature_names_in_])
 
     if preds.argmax() == 1:
         return f"Predicted Dibetes  with Probs score of  {preds.max():.4f}", 1
