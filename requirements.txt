@@ -9,8 +9,7 @@ Flask-Login
 Flask-Migrate
 Flask-Script
 Flask-SQLAlchemy
-Flask-WTF
-Flask-User
+
 
 # Automated tests
 pytest
@@ -23,4 +22,4 @@ click
 Jinja2
 MarkupSafe
 Werkzeug
-SQLAlchemy
+
