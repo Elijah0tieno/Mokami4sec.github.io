@@ -19,3 +19,7 @@ scikit-learn
 pandas
 numpy
 gunicorn
+click
+Jinja2
+MarkupSafe
+Werkzeug
