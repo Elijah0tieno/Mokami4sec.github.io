@@ -23,3 +23,4 @@ click
 Jinja2
 MarkupSafe
 Werkzeug
+SQLAlchemy
