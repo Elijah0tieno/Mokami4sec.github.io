@@ -15,11 +15,10 @@ Flask-SQLAlchemy
 pytest
 pytest-cov
 scikit-learn
-pandas
+pandas==1.5.3
 numpy
 gunicorn
 click
 Jinja2
 MarkupSafe
 Werkzeug
-
