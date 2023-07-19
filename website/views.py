@@ -13,10 +13,12 @@ import os
 
 def make_prediction(inputs_ll):
     # Load the pre-trained model
-    model = pd.read_pickle("website/models/model.pkl")
-    s1 = pd.read_pickle("website/models/scaler1.pkl")
-    s2 = pd.read_pickle("website/models/scaler2.pkl")
-    s3 = pd.read_pickle("website/models/scaler3.pkl")
+    model = pd.read_pickle("xg.pkl")
+    scaler = pd.read_pickle("scaler.pkl")
+
+    # s1 = pd.read_pickle("website/models/scaler1.pkl")
+    # s2 = pd.read_pickle("website/models/scaler2.pkl")
+    # s3 = pd.read_pickle("website/models/scaler3.pkl")
 
 
     # {'age': '23', 'cholesterol': '1', 'bmi': '12', 'activity': '0', 'health': '0', 'blood_pressure': '1'}
@@ -29,7 +31,8 @@ def make_prediction(inputs_ll):
     data = pd.DataFrame(inputs_ll, index=[0])[['PhysHlth', 'BMI', 'MentHlth', 'Age', 'GenHlth', 'HighBP', 'DiffWalk']]
 
     # do prediction using the pre-trained model
-    preds = model.predict_proba(data[model.best_estimator_.feature_names_in_])
+    # preds = model.predict_proba(data[model.best_estimator_.feature_names_in_])
+    preds = model.predict_proba(scaler.transform(data))
 
     if preds.argmax() == 1:
         return f"Predicted Dibetes  with Probs score of  {preds.max():.4f}", 1
