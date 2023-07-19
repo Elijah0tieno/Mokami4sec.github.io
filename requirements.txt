@@ -2,7 +2,7 @@
 # Usage: pip install -r requirements.txt
 
 # Flask Framework
-Flask
+Flask==2.2.2
 
 # Flask Packages
 Flask-Login
@@ -14,9 +14,9 @@ Flask-SQLAlchemy
 # Automated tests
 pytest
 pytest-cov
-scikit-learn
+scikit-learn==1.0.2
 pandas==1.5.3
-numpy
+numpy==1.21.5
 gunicorn
 click
 Jinja2
