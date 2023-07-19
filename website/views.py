@@ -20,12 +20,13 @@ def make_prediction(inputs_ll):
 
 
     # {'age': '23', 'cholesterol': '1', 'bmi': '12', 'activity': '0', 'health': '0', 'blood_pressure': '1'}
-
-    data = pd.DataFrame(inputs_ll, index=[0])
-    data[['BMI']] == s1.fit_transform(data[['BMI']])
-    data[['Age']] = s2.fit_transform(data[['Age']])
-    data[['PhysHlth']] = s3.transform(data[['PhysHlth']])
+    #
+    # data = pd.DataFrame(inputs_ll, index=[0])
+    # data[['BMI']] == s1.fit_transform(data[['BMI']])
+    # data[['Age']] = s2.fit_transform(data[['Age']])
+    # data[['PhysHlth']] = s3.transform(data[['PhysHlth']])
     #print(data)
+    data = pd.DataFrame(inputs_ll, index=[0])[['PhysHlth', 'BMI', 'MentHlth', 'Age', 'GenHlth', 'HighBP', 'DiffWalk']]
 
     # do prediction using the pre-trained model
     preds = model.predict_proba(data[model.best_estimator_.feature_names_in_])
@@ -54,17 +55,20 @@ def home():
 
         input_dict = {
             'Age': request.form.get('age'),
-            'HighChol': request.form.get('cholesterol'),
+            # 'HighChol': request.form.get('cholesterol'),
             'BMI': request.form.get('bmi'),
-            'PhysActivity': request.form.get('activity'),
-            'PhysHlth': request.form.get('health'),
-            'HighBP': request.form.get('blood_pressure'),
-
-            'CholCheck': request.form.get('chol_check'),
-            'HeartDiseaseorAttack': request.form.get('heart_disease_or_attack'),
             'GenHlth': request.form.get('gen_hlth'),
             'MentHlth': request.form.get('men_hlth'),
+            'PhysHlth': request.form.get('health'),
             'DiffWalk': request.form.get('diff_walk'),
+            'PhysActivity': request.form.get('activity'),
+            'HighBP': request.form.get('blood_pressure'),
+
+            # 'CholCheck': request.form.get('chol_check'),
+            # 'HeartDiseaseorAttack': request.form.get('heart_disease_or_attack'),
+
+
+
             }
 
 
