@@ -13,27 +13,11 @@ import os
 
 def make_prediction(inputs_ll):
     # Load the pre-trained model
-    model = pd.read_pickle("xg.pkl")
-    scaler = pd.read_pickle("scaler.pkl")
+    model = pd.read_pickle("website/models/xg.pkl")
+    scaler = pd.read_pickle("website/models/scaler.pkl")
 
-    # s1 = pd.read_pickle("website/models/scaler1.pkl")
-    # s2 = pd.read_pickle("website/models/scaler2.pkl")
-    # s3 = pd.read_pickle("website/models/scaler3.pkl")
-
-
-    # {'age': '23', 'cholesterol': '1', 'bmi': '12', 'activity': '0', 'health': '0', 'blood_pressure': '1'}
-    #
-    # data = pd.DataFrame(inputs_ll, index=[0])
-    # data[['BMI']] == s1.fit_transform(data[['BMI']])
-    # data[['Age']] = s2.fit_transform(data[['Age']])
-    # data[['PhysHlth']] = s3.transform(data[['PhysHlth']])
-    #print(data)
     data = pd.DataFrame(inputs_ll, index=[0])[['PhysHlth', 'BMI', 'MentHlth', 'Age', 'GenHlth', 'HighBP', 'DiffWalk']]
-
-    # do prediction using the pre-trained model
-    # preds = model.predict_proba(data[model.best_estimator_.feature_names_in_])
     preds = model.predict_proba(scaler.transform(data))
-
     if preds.argmax() == 1:
         return f"Predicted Dibetes  with Probs score of  {preds.max():.4f}", 1
     else:
@@ -42,35 +26,18 @@ def make_prediction(inputs_ll):
 
 views = Blueprint('views', __name__)
 
-
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
     if request.method == 'POST':
-        # note = request.form.get('note')#Gets the note from the HTML
-        #
-        # if len(note) < 1:
-        #     flash('Note is too short!', category='error')
-        # else:
-        #     new_note = Note(data=note, user_id=current_user.id)  #providing the schema for the note
-        #     db.session.add(new_note) #adding the note to the database
-        #     db.session.commit()
-
         input_dict = {
-            'Age': request.form.get('age'),
-            # 'HighChol': request.form.get('cholesterol'),
-            'BMI': request.form.get('bmi'),
-            'GenHlth': request.form.get('gen_hlth'),
-            'MentHlth': request.form.get('men_hlth'),
             'PhysHlth': request.form.get('health'),
-            'DiffWalk': request.form.get('diff_walk'),
-            'PhysActivity': request.form.get('activity'),
+            'BMI': request.form.get('bmi'),
+            'MentHlth': request.form.get('men_hlth'),
+            'Age': request.form.get('age'),
+            'GenHlth': request.form.get('gen_hlth'),
             'HighBP': request.form.get('blood_pressure'),
-
-            # 'CholCheck': request.form.get('chol_check'),
-            # 'HeartDiseaseorAttack': request.form.get('heart_disease_or_attack'),
-
-
+            'DiffWalk': request.form.get('diff_walk'),
 
             }
 
